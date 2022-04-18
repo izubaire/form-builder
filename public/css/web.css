@@ -1,0 +1,156 @@
+@import url('http://fonts.cdnfonts.com/css/proxima-nova-2');
+                
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+  font-family: 'Proxima Nova', sans-serif;
+}
+:root {
+  --blue: #4e92c1;
+  --darkblue: #112984;
+  --grey: #576271;
+  --red: #d6001c;
+  --white: #fff;
+  --black: #000;
+  --pink: #f5c6cc;
+}
+html {
+    /* font-size: calc(13px + 0.390625vw) !important; */
+    /* font-size: calc(15px + 0.390625vw) !important; */
+}
+body {
+  min-height: 100vh;
+  overflow: auto;
+  background-color: #f0f0f0;
+}
+a {
+  text-decoration: none !important;
+  color: inherit !important;
+  cursor: pointer !important;
+}
+li {
+  list-style: none !important;
+}
+.f500{font-weight: 500;}
+.f600{font-weight: 600;}
+.f700{font-weight: 700;}
+.f800{font-weight: 800;}
+.headingfont{font-size: 4.5rem;}
+.subheadingfont{font-size: 3.2rem;}
+.rounded-border{
+  border-radius: .6rem;
+}
+.position-absolute-center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* Utility Classes */
+.test {
+    border: 2px solid red;
+  }
+.js-hide {
+  display: none;
+}
+.js-right-zero {
+  right: 0;
+}
+.btn-red {
+  color: white !important;
+  background-color: var(--red) !important;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 4;
+  background-color: #1d1d1d;
+  opacity: 0.2;
+}
+
+/* header */
+header {
+    min-height: 100vh;
+    /* background-image: linear-gradient(rgba(20, 27, 77, 0.527),rgba(20, 27, 77, .8)), url('./assets/Group\ 3069.png'); */
+    background-image: url('/asset/webBackground.png');
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: var(--white);
+    text-align: center;
+  }
+  .allbuttons {
+      color: var(--white);
+}
+.whitebtn:hover {
+    color: var(--red) !important;
+  }
+  .redbtn {
+    background-color: var(--red) !important;
+    border: 2px solid var(--red);
+}
+.redbtn:hover{
+  border: 2px solid var(--white);
+  color: var(--red) !important;
+  background-color: var(--white) !important;
+  transition: all .7s;
+}
+.previousButton {
+  color: var(--red) !important;
+}
+.previousButton:hover {
+  color: var(--white) !important;
+  background-color: var(--red);
+}
+.nextButton{
+  background-color: var(--red);
+}
+.nextButton:hover{
+  color: var(--red) !important;
+  background-color: var(--white);
+}
+
+/* position-absolute w-100 */
+/* style="min-height: 100vh;" */
+.map-container{
+  position: sticky;
+  top: 0;
+}
+.map-frame{
+  min-height: 100vh;
+  width: 100%;
+}
+.socialIcon {
+  transition: all .5s;
+}
+.socialIcon:hover {
+  /* position: relative; */
+  /* top: -10px; */
+  /* transition: all 10s; */
+  transform: translateY(-15px);
+}
+
+/* for tablets and airpads */
+@media (max-width: 992px) and (min-width: 550px) {
+
+}
+
+@media (max-width: 768px) and (min-width: 320px) {
+  .map-frame{
+    min-height: 60vh;
+  }
+}
+
+/* for mobile devices */
+@media (max-width: 549px) and (min-width: 320px) {
+  .textLeft{text-align: left;}
+.headingfont{font-size: 2.5rem;}
+
+}
