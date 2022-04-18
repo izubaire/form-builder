@@ -1,0 +1,241 @@
+<%- include('./components/header.ejs') %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+    integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+  <link rel="stylesheet" href="/form-builder/css/form_builder.css" />
+  </head>
+
+  <body>
+    <%- include('./components/topnav.ejs') %>
+      <%- include('./components/sidenav.ejs') %>
+        <section class="d-flex justify-content-end">
+          <div class="section px-2">
+            <div class="create-form-section">
+              <!-- <form action="/admin/create_form" onsubmit="submit()" method="post"> -->
+              <form action="">
+                <div class="overflow-hidden px-md-4 p-2 mb-2 container bg-white shadow-sm" >
+                  <div class="d-flex flex-wrap justify-content-between align-items-center">
+                    <input type="text" placeholder="Untitled Form" required id="formName" class="px-2 py-1">
+                    <select class="form-select p-1" aria-label="Default select example" id="selectClient" required>
+                      <option value="" disabled hidden selected>Select Client</option>
+                      <option selected value="<%= clientInfo._id %>">
+                        <%= clientInfo.name %>
+                      </option>
+                    </select>
+                  </div>
+                  <div class="d-flex justify-content-between flex-wrap" style="gap: 2;">
+                    <input type="text" placeholder="Logo Name" required id="logoName" class="px-2 py-1 mt-3">
+                    <input type="text" placeholder="Form Heading" required id="formHeading" class="px-2 py-1 mt-3">
+                    <input type="text" placeholder="Form Sub-Heading" required id="formSubHeading" class="px-2 py-1 mt-3">
+                  </div>
+                </div>
+                <input type="submit" hidden id="submitForm">
+              </form>
+              <div style="display: none;" class="export_html pull-right">
+                <div
+                  class="d-flex flex-wrap overflow-hidden justify-content-between align-items-center px-md-4 p-2 mb-2 container bg-white shadow-sm">
+                  <button class="btn btn-sm btn-danger" onclick="submit('save')">Save</button>
+                  <button class="btn btn-sm btn-outline-danger" onclick="submit('preview')">Save & Preview</button>
+                </div>
+              </div>
+              <!-- </form> -->
+              <div class="container">
+                <div class="form_builder">
+                  <div class="row">
+                    <div class="col-lg-4 col-6 order-lg-1 order-2  px-0">
+                      <nav class="nav-sidebar">
+                        <ul
+                          class="nav bg-white shadow-sm d-flex justify-content-center align-items-center py-lg-4 py-2">
+                          <li style="background-color: var(--pinke);color: var(--rede);" class="test btn btn-outline-danger w-75 mb-2 p-1 form_bal_textfield">
+   <div class="d-flex justify-content-start align-items-center"> <a href="javascript:;"> <i class="bi bi-chat-text-fill"></i> <span>Short Answers</span> </a> </div>
+</li>
+<li style="background-color: var(--pinke);color: var(--rede);" class="test btn btn-outline-danger w-75 mb-2 p-1 form_bal_creditCard">
+   <div class="d-flex justify-content-start align-items-center"> <a href="javascript:;"> <i class="bi bi-credit-card-2-front-fill"></i> <span>Credit Card</span> </a> </div>
+</li>
+                          <li style="background-color: var(--pinke);color: var(--rede);"
+                            class="test btn btn-outline-danger w-75 mb-2 p-1 form_bal_textarea">
+                            <div class="d-flex justify-content-start align-items-center">
+                              <a href="javascript:;"> <i class="bi bi-chat-square-text-fill"></i> <span>Long
+                                  Answers</span> </a>
+                            </div>
+                          </li>
+                          <li style="background-color: var(--pinke);color: var(--rede);"
+                            class="test btn btn-outline-danger w-75 mb-2 p-1 form_bal_radio">
+                            <div class="d-flex justify-content-start align-items-center">
+                              <a href="javascript:;"> <img src="/asset/Icon ionic-md-radio-button-on.svg" alt="logo">
+                                <span>Single Choice</span> </a>
+                            </div>
+                          </li>
+                          <li style="background-color: var(--pinke);color: var(--rede);"
+                            class="test btn btn-outline-danger w-75 mb-2 p-1 form_bal_checkbox">
+                            <div class="d-flex justify-content-start align-items-center">
+                              <a href="javascript:;"> <i class="bi bi-check-square-fill"></i> <span>Mutliple
+                                  Choice</span> </a>
+                            </div>
+                          </li>
+                          <li style="background-color: var(--pinke);color: var(--rede);"
+                            class="test btn btn-outline-danger w-75 mb-2 p-1 form_bal_select">
+                            <div class="d-flex justify-content-start align-items-center">
+                              <a href="javascript:;"> <i class="bi bi-caret-down-square-fill"></i> <span>Dropdown</span>
+                              </a>
+                            </div>
+                          </li>
+                          <li style="background-color: var(--pinke);color: var(--rede);"
+                            class="test btn btn-outline-danger w-75 mb-2 p-1 form_bal_email">
+                            <div class="d-flex justify-content-start align-items-center">
+                              <a href="javascript:;"> <i class="bi bi-envelope-fill"></i> <span>Email</span> </a>
+                            </div>
+                          </li>
+                          <li style="background-color: var(--pinke);color: var(--rede);"
+                            class="test btn btn-outline-danger w-75 mb-2 p-1 form_bal_number">
+                            <div class="d-flex justify-content-start align-items-center">
+                              <a href="javascript:;"> <i class="bi bi-telephone-fill"></i> <span>Phone Number</span>
+                              </a>
+                            </div>
+                          </li>
+                          <li style="background-color: var(--pinke);color: var(--rede);"
+                            class="test btn btn-outline-danger w-75 mb-2 p-1 form_bal_password">
+                            <div class="d-flex justify-content-start align-items-center">
+                              <a href="javascript:;"> <i class="bi bi-shield-lock-fill"></i> <span>Password</span> </a>
+                            </div>
+                          </li>
+                          <li style="background-color: var(--pinke);color: var(--rede);"
+                            class="test btn btn-outline-danger w-75 mb-2 p-1 form_bal_date">
+                            <div class="d-flex justify-content-start align-items-center">
+                              <a href="javascript:;"> <i class="bi bi-calendar-fill"></i> <span>Date</span> </a>
+                            </div>
+                          </li>
+                          <!-- <li style="background-color: var(--pinke);color: var(--rede);" class="test btn btn-outline-danger w-75 mb-2 p-1 form_bal_button">
+                                <div class="d-flex justify-content-start align-items-center">
+                                  <a href="javascript:;"> <i class="bi bi-filter-square-fill"></i> <span>Button</span> </a>
+                                </div>
+                              </li> -->
+                        </ul>
+                      </nav>
+                    </div>
+                    <div class="col-lg-8 col-6 order-lg-2 order-3 bal_builder bg-white"
+                      style="max-height: 80vh; padding-bottom: 8rem;overflow: auto;">
+                      <div class="row form_builder_area" style="min-height: 100%;">
+
+                      </div>
+                    </div>
+                    <div class="col-lg-5 col-12 order-lg-3 order-1">
+                      <div class="col-md-12">
+                        <form class="form-horizontal">
+                          <div class="preview">
+                          </div>
+                          <div style="display: none !important" class="form-group plain_html"><textarea rows="50"
+                              class="form-control" style="max-height: 80vh;"></textarea></div>
+                        </form>
+                      </div>
+                      <div class="exportFormContainer" style="display: none;">
+                        <form class="exportForm">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+          integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+          crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
+          integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+          crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script src="/form-builder/js/form_builder.js"></script>
+
+        <script type="text/javascript">
+
+          console.log('working create form');
+
+          const submit = async (submitType) => {
+            console.log(selectClient.value);
+            const formBody = document.querySelector('.plain_html textarea');
+            const formBuilder = document.querySelector('.form_builder_area');
+              // logoName
+              // formHeading
+              // formSubHeading
+            // if these five field is emtpy then required activate after click
+            if (!formName.value 
+              || !selectClient.value 
+              || !logoName.value 
+              || !formHeading.value 
+              || !formSubHeading.value
+            ) 
+              return submitForm.click();
+            console.log('submit working');
+
+            const data = {
+              formBody: formBody.value.trim(),
+              formBuilder: formBuilder.innerHTML.trim(),
+              formName: formName.value,
+              selectedClient: selectClient.value,
+              logoName: logoName.value, 
+              formHeading: formHeading.value, 
+              formSubHeading: formSubHeading.value, 
+            };
+            // console.log(data);
+            const response = await fetch('/client/create_form', {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data),
+            });
+            const result = await response;
+            const respJson = await response.json();
+            if (result.status === 200) {
+              console.log(submitType);
+              submitType === "save" ? window.location.replace('/client') : window.location.replace(`/${respJson._id}`);
+            }
+          };
+
+          // const preveiw = async () => {
+          //   const formBody = document.querySelector('.plain_html textarea');
+          //   const formBuilder = document.querySelector('.form_builder_area');
+          //   if (!formName.value) return submitForm.click();
+          //   if (!selectClient.value) return submitForm.click();
+          //   const data = {
+          //     formBody: formBody.value.trim(),
+          //     formBuilder: formBuilder.innerHTML.trim(),
+          //     formName: formName.value,
+          //     selectedClient: selectClient.value,
+
+          //   };
+          //   // console.log(data);
+          //   const response = await fetch('/admin/create_form', {
+          //     method: 'POST',
+          //     headers: {
+          //       'Accept': 'application/json',
+          //       'Content-Type': 'application/json'
+          //     },
+          //     body: JSON.stringify(data),
+          //   });
+          //   const statusCode = await response;
+          //   const result = await response.json();
+          //   console.log(statusCode.status);
+          //   if (statusCode.status === 200) return window.location.replace(`/admin/web_preview/${result._id}`);
+          // };
+
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-36251023-1']);
+          _gaq.push(['_setDomainName', 'jqueryscript.net']);
+          _gaq.push(['_trackPageview']);
+
+          (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+        <%- include('./components/footer.ejs') %>
+
+

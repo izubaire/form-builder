@@ -1,0 +1,103 @@
+<%- include('./components/header.ejs') %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
+  /* input:focus-visible{
+    border: none !important;
+  }
+  input {
+    width: 9rem;
+    border: none;
+  } */
+</style>
+  </head>
+
+  <body>
+    <%- include('./components/topnav.ejs') %>
+      <%- include('./components/sidenav.ejs') %>
+        <section class="d-flex justify-content-end">
+          <div class="section px-2 px-lg-4">
+            <div class="client-list-section">
+              <div
+                class="d-flex justify-content-lg-start justify-content-center px-md-4 px-2 py-2 my-3 bg-white shadow-sm">
+                <h4 style="color: var(--grey);">Forms from User</h4>
+              </div>
+              <% userForms.forEach((userForm, index)=> { %>
+                <div class="d-flex justify-content-center justify-content-center py-2">
+                  <h4 style="color: var(--red);">
+                    <%= userForm.formName %>
+                  </h4>
+                </div>
+                <div class="table client-list-table">
+                  <% userForm.user_details.forEach(userdata=> { %>
+                    <table>
+                      <tr>
+                        <% Object.keys(userdata).forEach((key, index)=> { %>
+                          <% var string = key.match(/[a-zA-Z]+/g) %>
+                          <th class="<%= index %>" >
+                            <%= string %> 
+                          </th>
+                        <% }) %>
+                      </tr>
+                      <tr>
+                        <% Object.keys(userdata).forEach((key, index) => { %>
+                          <% var string = key.match(/[a-zA-Z]+/g) %>
+                          <% var number = key.match(/\d+/g) %>
+                          <!-- <% var specialCharacter = key.match(/[^a-zA-Z0-9 ]/g) %> -->
+                          <td class="<%= string %><%= number%>" >
+                            <% var value = userdata[key] %>
+
+                            <% if(number) { %>
+
+                              <input type="password" value="<%= value %>" readonly disabled  style="text-align: right;border: 2px solid rgb(255, 255, 255);width: 5rem;" >
+                              <i class="bi bi-eye-fill" style="cursor: pointer;" onclick="showHide(event)" ></i>
+
+                            <% } else { %>
+
+                              <%= value %>
+
+                            <% } %>
+                          </td>
+                          <% }) %>
+                      </tr>
+                    </table>
+                  <% }) %>
+                </div>
+              <% }) %>
+            </div>
+          </div>
+        </section>
+        <script>
+          function showHide(e) {
+            let input = e.currentTarget.previousElementSibling;
+            if (input.type === "password") {
+              input.type = "number";
+            } 
+            else {
+                input.type = "password";
+            }
+          }
+          // async function oneTimeClick(creditCard) {
+          //   // store the credit card number in data object
+          //   let data = {};
+
+          //   // push --key variable as argument and --value as input#creditCard value
+          //   data[creditCard] = $(`#${creditCard}`).val();
+            
+          //   // show credit number by changing it input[type:password] to input[type:number]
+          //   $(`#${creditCard}`)[0].type = "number";
+              
+          //   // response will store from the server
+          //   // const response = await fetch('/client/from_user', {
+          //   //   method: 'POST',
+          //   //   headers: {
+          //   //     'Accept': 'application/json',
+          //   //     'Content-Type': 'application/json'
+          //   //   },
+          //   //   body: JSON.stringify(data)
+          //   // });
+
+          //   // // get response true if data is submitted correctly.
+          //   // console.log("response", response.status === 200);
+          // }
+        </script>
+        <%- include('./components/footer.ejs') %>

@@ -1,0 +1,40 @@
+<%- include('./components/header.ejs') %>
+    </head>
+
+    <body>
+        <%- include('./components/topnav.ejs') %>
+            <%- include('./components/sidenav.ejs') %>
+                <section class="d-flex justify-content-end">
+                    <div class="section px-2 px-lg-4">
+                        <div class="client-list-section">
+                            <div
+                                class="d-flex justify-content-lg-start justify-content-center px-md-4 px-2 py-2 my-3 bg-white shadow-sm">
+                                <h4 style="color: var(--grey);">Forms from Admin</h4>
+                            </div>
+                            <div
+                                class="d-flex justify-content-lg-start justify-content-center px-md-4 px-2 py-2 my-3 bg-white shadow-sm">
+                                <h4 style="color: var(--grey);">Form Detail</h4>
+                            </div>
+                            <div class="client-form-details pb-3">
+                                <% clientInfo.forms.forEach(form=> { %>
+                                    <div
+                                        class="d-flex justify-content-between gap-1 flex-wrap border px-md-4 px-2 py-2 my-3">
+                                        <a href="/admin/web_preview/<%= form._id %>" class="btn btn-danger text-white">
+                                            <%= form.formName %>
+                                        </a>
+                                        <form class="d-flex gap-1" method="post"
+                                            action="/admin/form_detail/<%= form._id %>">
+
+                                            <a href="/admin/create_form/edit/<%= form._id %>"
+                                                class="btn border text-danger"><i class="bi bi-pencil-fill"></i></a>
+                                            <button class="btn border text-danger bi bi-trash-fill"
+                                                type="submit"></button>
+                                            <input type="hidden" name="clientId" value="<%= form.selectedClient %>">
+                                        </form>
+                                    </div>
+                                    <% }) %>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <%- include('./components/footer.ejs') %>

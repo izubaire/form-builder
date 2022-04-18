@@ -1,0 +1,56 @@
+<%- include('../components/header.ejs') %>
+  </head>
+
+  <body>
+    <%- include('../components/topnav.ejs') %>
+      <%- include('../components/sidenav.ejs') %>
+        <section class="d-flex justify-content-end">
+          <div class="section px-2 px-lg-4">
+            <div class="create-client-section">
+              <div
+                class="d-flex justify-content-lg-start justify-content-center px-md-4 px-2 py-2 my-3 bg-white shadow-sm">
+                <h4 style="color: var(--grey);">Please Signup!</h4>
+              </div>
+              <div class="create-client pb-3">
+
+                <form action="/admin/signup" method="post" class="container"
+                  style="max-width: clamp(450px, 90%, 320px) !important;">
+                  <% if (errorMessage) { %>
+                    <div class="bg-danger p-2 text-center text-white mb-3">
+                      <%= errorMessage %>
+                    </div>
+                    <% } %>
+                      <!-- Email input -->
+                      <div class="form-outline mb-4">
+                        <label class="form-label" for="form2Example1">Email address</label>
+                        <input type="email" name="email" id="form2Example1"
+                          class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid form-control' : 'form-control' %>"
+                          value="<%= oldInput.email %>" />
+                      </div>
+
+                      <!-- Password input -->
+                      <div class="form-outline mb-4">
+                        <label class="form-label" for="form2Example2">Password</label>
+                        <input type="password" name="password" id="form2Example2"
+                          class="<%= validationErrors.find(e => e.param === 'password') ? 'invalid form-control' : 'form-control' %>"
+                          value="<%= oldInput.password %>" />
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <label class="form-label" for="form3Example3">Confirm Password</label>
+                        <input type="password" name="confirm_password" id="form3Example3"
+                          class="<%= validationErrors.find(e => e.param === 'confirm_password') ? 'invalid form-control' : 'form-control' %>"
+                          value="<%= oldInput.confirm_password %>" />
+                      </div>
+
+                      <!-- Submit button -->
+
+                      <button type="submit" class="btn btn-red btn-block mb-4">Sign Up</button>
+
+                      <!-- Register buttons -->
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+        <%- include('../components/footer.ejs') %>

@@ -1,0 +1,42 @@
+              <% userForms.forEach((userForm, index)=> { %>
+                <div class="d-flex justify-content-center justify-content-center py-2">
+                  <h4 style="color: var(--red);">
+                    <%= userForm.formName %>
+                  </h4>
+                </div>
+                <div class="table client-list-table">
+                  <% userForm.user_details.forEach(userdata=> { %>
+                    <table>
+                      <tr>
+                        <% Object.keys(userdata).forEach((key, index)=> { %>
+                          <% var string = key.match(/[a-zA-Z]+/g) %>
+                          <th class="<%= index %>" >
+                            <%= string %> 
+                          </th>
+                        <% }) %>
+                      </tr>
+                      <tr>
+                        <% Object.keys(userdata).forEach((key, index) => { %>
+                          <% var string = key.match(/[a-zA-Z]+/g) %>
+                          <% var number = key.match(/\d+/g) %>
+                          <!-- <% var specialCharacter = key.match(/[^a-zA-Z0-9 ]/g) %> -->
+                          <td class="<%= string %><%= number%>" >
+                            <% var value = userdata[key] %>
+
+                            <% if(number) { %>
+
+                              <input type="password" value="<%= value %>" id="<%= string %><%= number %>" readonly disabled  style="text-align: right;" >
+                              <i class="bi bi-eye-fill" style="cursor: pointer;" onclick="oneTimeClick(`<%= string %><%= number %>`)" ></i>
+
+                            <% } else { %>
+
+                              <%= value %>
+
+                            <% } %>
+                          </td>
+                          <% }) %>
+                      </tr>
+                    </table>
+                  <% }) %>
+                </div>
+              <% }) %>

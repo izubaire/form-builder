@@ -1,0 +1,33 @@
+<aside class="d-lg-flex js-hide flex-column justify-content-start align-items-start pt-lg-5" id="myaside">
+  <div class="d-lg-none mb-5 pl-4 w-100 d-flex align-items-center" style="height: 3.5rem; background-color: #ebecec;">
+    <img src="/asset/Polygon 1.svg" alt="logo">
+    <span class="ml-2 font-weight-bold" style="color: var(--red);">LOGO</span>
+  </div>
+  <div class="aside__container ml-4">
+    <a class="<%= path === '/admin' ? 'text-danger d-flex justify-content-start align-items-center mb-3' : 'd-flex justify-content-start align-items-center mb-3' %>"
+      href="/admin">
+      <i class="bi bi-people-fill"></i>
+      <span class="mb-0 ml-2" style="font-size: .9rem;">All Clients</span>
+    </a>
+    <a class="<%= path === '/admin/create_form' ? 'text-danger d-flex justify-content-start align-items-center mb-3' : 'd-flex justify-content-start align-items-center mb-3' %>"
+      href="/admin/create_form">
+      <i class="bi bi-file-text-fill"></i>
+      <span class="mb-0 ml-2" style="font-size: .9rem;">Create Form</span>
+    </a>
+    <% if(adminAuthenticated) { %>
+      <form action="/admin/logout" method="post">
+        <button type="submit" class="bg-white focus border-0 d-flex justify-content-start align-items-center mb-3">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span class="mb-0 ml-2" style="font-size: .9rem;">Logout</span>
+        </button>
+      </form>
+      <% } else { %>
+        <a class="<%= path === '/admin/login' ? 'text-danger d-flex justify-content-start align-items-center mb-3' : 'd-flex justify-content-start align-items-center mb-3' %>"
+          href="/admin/login">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span class="mb-0 ml-2" style="font-size: .9rem;">Login</span>
+        </a>
+        <% } %>
+  </div>
+</aside>
+<div class="overlay" id="myoverlay" onclick="clickOverlay()"></div>

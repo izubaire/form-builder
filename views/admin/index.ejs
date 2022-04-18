@@ -1,0 +1,36 @@
+<%- include('./components/header.ejs') %>
+</head>
+<body>
+    <%- include('./components/topnav.ejs') %>
+    <%- include('./components/sidenav.ejs') %>
+    <section class="d-flex justify-content-end">
+      <div class="section px-2 px-lg-4">
+        <div class="client-list-section">
+          <div class="d-flex justify-content-between px-md-4 px-2 py-2 my-3 bg-white shadow-sm">
+            <h4 style="color: var(--grey);">Client List</h4>
+            <a href="/admin/client_register" class="btn btn-red">Creat Client</a>
+          </div>
+          <div class="table client-list-table">
+            <table>
+              <tr>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Total forms</th>
+                <th>Form details</th>
+              </tr>
+              <% clients.forEach( (client) => { %>
+                <tr>
+                  <td><%= client.name %></td>
+                  <td><%= client.contact %></td>
+                  <td><%= client.email %></td>
+                  <td><%= client.forms.length %></td>
+                  <td><a class="btn btn-sm btn-red" href="/admin/form_detail/<%= client._id  %>">Detail</a></td>
+                </tr>
+              <% }); %> 
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include('./components/footer.ejs') %>

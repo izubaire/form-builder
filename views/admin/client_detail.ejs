@@ -1,0 +1,52 @@
+<%- include('./components/header.ejs') %>
+
+  </head>
+
+  <body>
+    <%- include('./components/topnav.ejs') %>
+      <%- include('./components/sidenav.ejs') %>
+        <section class="d-flex justify-content-end">
+          <div class="section px-2 px-lg-4">
+            <div class="client-form-details-section">
+              <div
+                class="d-flex justify-content-lg-start justify-content-center px-md-4 px-2 py-2 my-3 bg-white shadow-sm">
+                <h4 style="color: var(--grey);">Client Detail</h4>
+              </div>
+              <div class="pb-3">
+                <!-- <form class="d-flex flex-column justify-content-start align-items-lg-start align-items-center" action="">
+                  <button class="btn btn-outline-danger mb-3 w-50">Form1</button>
+                  <button class="btn btn-outline-danger mb-3 w-50">Form2</button>
+                  <button class="btn btn-outline-danger mb-3 w-50">Form3</button>
+                  <button class="btn btn-outline-danger mb-3 w-50">Form4</button>
+                </form> -->
+                <form class="d-flex flex-column" method="post" action="/admin/client_detail/update/<%= clientInfo._id %>" style="max-width: clamp(500px, 100%, 320px);">  
+                  <label class="font-weight-bold" for="">Client Name</label>
+                  <input type="text" name="name" class="p-2" value="<%= clientInfo.name  %>" />
+                  <label class="font-weight-bold" for="">Client Email</label>
+                  <input type="text" name="email" class="p-2" value="<%= clientInfo.email  %>" />
+                  <label class="font-weight-bold" for="">Client Password</label>
+                  <div>
+                    <input id="password" type="password" name="password" class="py-2 w-100 pr-5 pl-2"
+                      value="<%= clientInfo.password  %>"> <i onclick="showPassword(event)" class="bi bi-eye-fill"
+                      style="margin: -9%;cursor: pointer;font-size: 1.2rem;"></i> </input>
+                    <script>
+                      function showPassword(e) {
+                        e.currentTarget.classList.toggle('bi-eye-slash-fill');
+                        if (e.currentTarget.className.includes('bi-eye-slash-fill'))
+                          return password.setAttribute("type", "text");
+                        else
+                          return password.setAttribute("type", "password");
+                      }
+                    </script>
+                  </div>
+                  <label class="font-weight-bold" for="">Client Contact</label>
+                  <input type="text" name="contact" class="p-2" value="<%= clientInfo.contact  %>" />
+                  <label class="font-weight-bold" for="">Client Location</label>
+                  <input type="text" name="location" class="p-2" value="<%= clientInfo.location  %>" />
+                  <button class="btn btn-md btn-danger my-4" type="submit">Update</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+        <%- include('./components/footer.ejs') %>
