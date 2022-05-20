@@ -5,9 +5,9 @@ const { AdminRegister } = require("../models/admin");
 
 const Mailjet = require("node-mailjet");
 const mailjet = new Mailjet({
-  apiKey: process.env.MJ_APIKEY_PUBLIC || "aa464774ded6b73323be8fdb7c11765d",
+  apiKey: process.env.MJ_APIKEY_PUBLIC,
   apiSecret:
-    process.env.MJ_APIKEY_PRIVATE || "4cc52abd2d5fe9123999d7c3824fa7bf",
+    process.env.MJ_APIKEY_PRIVATE,
 });
 
 const { validationResult } = require("express-validator");
